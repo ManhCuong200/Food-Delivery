@@ -229,3 +229,100 @@ footer {
 a {
   color: #9dd6ff;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .controls {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    padding: 10px 36px 10px 42px;
+    font-size: 15px;
+  }
+
+  /* Hiển thị card 1 cột full width, đẹp như mobile app */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0e1526, #0a0f1b);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .badge {
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .body {
+    padding: 14px 16px 16px;
+  }
+
+  .name {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .desc {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .row {
+    margin-top: 8px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .add-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 12px;
+    margin: 20px 0;
+  }
+}
