@@ -1,4 +1,8 @@
 const gridFoods = document.getElementById("grid");
+const search = document.getElementById("search");
+const statusSearch = document.getElementById("status");
+
+let listFoods = [];
 
 // Lấy dữ liệu từ API
 async function getData() {
@@ -9,6 +13,7 @@ async function getData() {
     if (!response.ok) throw new Error("Lỗi mạng hoặc API"); // Kiểm tra lỗi
     const data = await response.json(); // Chuyển phản hồi thành JSON
     const datafood = data;
+    listFoods = datafood;
     renderfoods(datafood);
   } catch (error) {
     console.error("Lỗi:", error.message); // Xử lý lỗi
@@ -17,8 +22,21 @@ async function getData() {
 getData();
 
 function renderfoods(datafood) {
-  gridFoods.innerHTML = "";
-  datafood.forEach((food) => {
+  const valueInput = search.value.toLowerCase();
+  // tạo mảng chứa các món ăn
+  const datasearch = datafood.filter((item) =>
+    item.name.toLowerCase().includes(valueInput)
+  );
+  // nếu datafood rỗng
+  if (datasearch.length === 0) {
+    //block statusSearch
+    statusSearch.style.display = "block";
+    gridFoods.innerHTML = "";
+    return;
+  }
+  statusSearch.style.display = "none";
+
+  datasearch.forEach((food) => {
     gridFoods.innerHTML += `
             <article class="card">
                 <span class="badge">${food.category}</span>
@@ -38,3 +56,7 @@ function renderfoods(datafood) {
   });
 }
 getData();
+
+search.addEventListener("input", function () {
+  renderfoods(listFoods);
+});
